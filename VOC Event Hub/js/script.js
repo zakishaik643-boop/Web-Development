@@ -3,16 +3,27 @@ const form = document.getElementById('register-form');
 const navToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
+/* FAQ accordion */
+
 faqItems.forEach((item) => {
   const trigger = item.querySelector('.faq-question');
   const answer = item.querySelector('.faq-answer');
+
+  if (!trigger || !answer) {
+    return;
+  }
 
   trigger.addEventListener('click', () => {
     const isOpen = item.classList.contains('active');
 
     faqItems.forEach((faqItem) => {
+      const faqAnswer = faqItem.querySelector('.faq-answer');
+
       faqItem.classList.remove('active');
-      faqItem.querySelector('.faq-answer').hidden = true;
+
+      if (faqAnswer) {
+        faqAnswer.hidden = true;
+      }
     });
 
     if (!isOpen) {
@@ -22,12 +33,17 @@ faqItems.forEach((item) => {
   });
 });
 
+/* Registration form */
+
 if (form) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
 
     if (!name || !email) {
       alert('Please complete your details before registering.');
@@ -38,26 +54,22 @@ if (form) {
   });
 }
 
+/* Mobile navigation */
+
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('is-open');
-    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!isExpanded));
+    const isOpen = navLinks.classList.toggle('is-open');
+
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 }
+
+/* Register button */
 
 const registerButton = document.querySelector('.primary-btn');
+
 if (registerButton) {
   registerButton.addEventListener('click', () => {
-    const activeButton = document.querySelector('.primary-btn.active');
-    if (activeButton) {
-      activeButton.classList.remove('active');
-    }
     registerButton.classList.add('active');
   });
-}
-
-const latestStats = document.querySelector('.faq-item .faq-answer');
-if (latestStats) {
-  latestStats.textContent = 'Seats are filling quickly for this year\'s workshop.';
 }
