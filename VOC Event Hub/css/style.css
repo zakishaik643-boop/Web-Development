@@ -32,6 +32,8 @@ img {
   display: block;
 }
 
+/* Header */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -73,11 +75,15 @@ img {
   display: none;
 }
 
+/* Main */
+
 main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
 }
+
+/* Hero */
 
 .hero {
   display: grid;
@@ -127,17 +133,19 @@ main {
   text-decoration: none;
   border: 1px solid transparent;
   font-weight: 700;
-  cursor: default;
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-}
-
-.primary-btn:focus,
-.secondary-btn:focus {
-  outline: none;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--brand) 0%, #0ea5e9 100%);
+  background: linear-gradient(
+    135deg,
+    var(--brand) 0%,
+    #0ea5e9 100%
+  );
   color: var(--white);
   box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
 }
@@ -154,6 +162,12 @@ main {
   opacity: 0.96;
 }
 
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
+}
+
 .hero-visual img {
   width: 100%;
   min-height: 320px;
@@ -161,6 +175,8 @@ main {
   object-fit: cover;
   box-shadow: var(--shadow);
 }
+
+/* Content sections */
 
 .content-section {
   padding: 3.75rem 0 0;
@@ -170,6 +186,8 @@ main {
   margin-bottom: 1.25rem;
   font-size: clamp(2rem, 2.5vw, 2.5rem);
 }
+
+/* Schedule and speakers */
 
 .schedule-grid,
 .speaker-grid {
@@ -201,6 +219,8 @@ main {
   margin-bottom: 0.75rem;
 }
 
+/* FAQ */
+
 .faq-list {
   max-width: 780px;
 }
@@ -224,6 +244,8 @@ main {
   color: var(--muted);
   line-height: 1.6;
 }
+
+/* Registration */
 
 .registration-wrap {
   max-width: 720px;
@@ -252,6 +274,14 @@ main {
   font: inherit;
 }
 
+.register-form input:focus,
+.register-form select:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.15);
+  border-color: var(--brand);
+}
+
+/* Footer */
+
 .site-footer {
   margin-top: 3rem;
   padding: 2rem 1.25rem 3rem;
@@ -267,6 +297,8 @@ main {
   color: #a5b4fc;
 }
 
+/* Responsive */
+
 @media (max-width: 720px) {
   .main-nav {
     flex-wrap: wrap;
@@ -279,7 +311,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 1rem;
     padding-top: 0.5rem;
   }
 
